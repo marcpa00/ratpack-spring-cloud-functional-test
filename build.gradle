@@ -19,8 +19,10 @@ apply plugin: "eclipse"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories {
-    jcenter()
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.SR1"
+    }
 }
 
 dependencies {
@@ -32,10 +34,8 @@ dependencies {
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.SR1"
-    }
+repositories {
+    jcenter()
 }
 
 springBoot {
