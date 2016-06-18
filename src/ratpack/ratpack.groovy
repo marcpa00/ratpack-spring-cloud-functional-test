@@ -9,7 +9,7 @@ ratpack {
   handlers {
     register(Spring.spring(SpringBootConfig))
     get {
-      render "Hello World from ratpack + boot + eureka (client)"
+      render "Hello World from ratpack + boot"
     }
   }
 }

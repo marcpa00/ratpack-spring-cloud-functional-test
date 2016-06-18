@@ -1,16 +1,14 @@
 package app
 
 import ratpack.groovy.test.GroovyRatpackMainApplicationUnderTest
-import spock.lang.Ignore
+import spock.lang.Shared
 import spock.lang.Specification
 
 class FunctionalSpec extends Specification {
 
-    def setup() {
-        System.setProperty('eureka.client.enabled', 'false')
-    }
+    @Shared
+    String expected = "Hello World from ratpack + boot"
 
-    //@Ignore
     def "GET / should render default hello world text"() {
         given: "our application under test fixture"
         def aut = new GroovyRatpackMainApplicationUnderTest()
@@ -19,13 +17,12 @@ class FunctionalSpec extends Specification {
         def response = aut.httpClient.text
 
         then: "response is as expected"
-        response == 'Hello World from ratpack + boot + eureka (client)'
+        response == expected
 
         cleanup:
         aut.close()
     }
 
-    //@Ignore
     def "another method checking GET / should render default hello world text"() {
         given: "our application under test fixture"
         def aut = new GroovyRatpackMainApplicationUnderTest()
@@ -34,7 +31,7 @@ class FunctionalSpec extends Specification {
         def response = aut.httpClient.text
 
         then: "response is as expected"
-        response == 'Hello World from ratpack + boot + eureka (client)'
+        response == expected
 
         cleanup:
         aut.close()
